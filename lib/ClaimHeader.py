@@ -61,7 +61,7 @@ class ClaimHeader:
         Av_IEA = IEA_Availity('1', controlNumber)
         
         # GS/GE Segment
-        Av_GS = GS_Availity(Av_ISA.getSenderId(), 'VAMMIS FA', interchangeFullDate, interchangeTime, controlNumber)
+        Av_GS = GS_Availity(Av_ISA.getSenderId(), 'ECGCLAIMS', interchangeFullDate, interchangeTime, controlNumber)
         Av_GE = GE_Availity('1', controlNumber)
         
         #ST Segment       
@@ -81,7 +81,7 @@ class ClaimHeader:
         
         # 1000B loop
         # Receiver info
-        Av_Receiver = Receiver('Dept of Med Assist Svcs', Av_ISA.getReceiverId())
+        Av_Receiver = Receiver('CHANG HEALTHCARE', '680424999')
         
         # Billing Provider Hierarchical Level
         Av_Taxonomy = Taxonomy('BI')
@@ -103,7 +103,7 @@ class ClaimHeader:
         
         # Payer Info
         Av_PayerAddress = Address(False, self.dilimiter, '12727 Fantasia Drive', '', 'Herndon', 'VA', '20170').getSegment()
-        Av_Payer = Payer(self.dilimiter, 'VIRGINIA DEPARTMENT OF MEDICAL ASSISTANCE SERVICES (DMAS)', '7737', Av_PayerAddress)
+        Av_Payer = Payer(self.dilimiter, 'Molina Complete Care of Virginia', 'MCD B', Av_PayerAddress)
         
         # Claim Info
         Av_Claim = Claim(self.dilimiter, Av_SubscriberName.getPatientID(), self.billing_total, self.claimFreqType, self.subscriber.get_zip())
